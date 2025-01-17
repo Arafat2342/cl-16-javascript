@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock timer</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: rgb(16, 17, 37);
+            color: #4cc0ff;
+        }
+        #timedisplay{
+            font-size: 300%;
+            transition: width 0.5, height 0.5 ease;
+            margin-top: 15%;
+            text-shadow:5px 12px 10px #4cc0ffa3;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="timedisplay" onload="showtime()">
+    </div>
+    <script>
+        function  showtime(){
+            var date = new Date(),
+                h = date.getHours(),
+                m = date.getMinutes(),
+                s = date.getSeconds(),
+                session = "AM";
+                if(h == 0){
+                    h = 12;
+                }
+
+                if(h > 12){
+                    h = h-12;
+                    session = "PM"
+                }
+
+                var h = (h >= 10)? h :  "0" + h;
+                var m = (m >= 10)? m :  "0" + m;
+                var h = (s >= 10)? h :  "0" + s;
+
+                var time = h + ":"+ m + ":" + s;
+                document.getElementById("timedisplay").innerHTML = time;
+
+                setTimeout(showtime, 1000)
+        }
+
+        showtime();
+    </script>
+</body>
+</html>

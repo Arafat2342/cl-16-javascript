@@ -6,24 +6,46 @@
     <title>clock timer</title>
     <style>
         body{
+            flex-direction: column;
             display: flex;
-            justify-content: center;
             background-color: rgb(16, 17, 37);
             color: #4cc0ff;
+            background-image: radial-gradient(circle at bottom right, rgb(255, 255, 0),  transparent 15%), radial-gradient(circle at top left, rgba(0, 51, 255, 0.492),  transparent 15%);
+            background-repeat: no-repeat;
+            height: 97.5vh;
         }
         #timedisplay{
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 300%;
             transition: width 0.5, height 0.5 ease;
             margin-top: 15%;
+            text-shadow:5px 12px 10px #4cc0ffa3;
+        }#year{
+            align-items: end;
+            justify-content: right;
+            font-size: 150%;
+            transition: width 0.5, height 0.5 ease;
+            margin-top: 1%;
             text-shadow:5px 12px 10px #4cc0ffa3;
         }
 
     </style>
 </head>
 <body>
+    <div id="year" onload="showdate()"></div>
     <div id="timedisplay" onload="showtime()">
     </div>
     <script>
+        function showdate(){
+            var date = new Date();
+            let y = date.getFullYear();
+            let d = date.getDate();
+            let m = date.getMonth() + 1;
+            document.getElementById("year").innerHTML = d + "-" + m + "-" + y;
+        }
+    
         function  showtime(){
             var date = new Date(),
                 h = date.getHours(),
@@ -50,6 +72,7 @@
         }
 
         showtime();
+        showdate();
     </script>
 </body>
 </html>
